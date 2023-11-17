@@ -65,13 +65,12 @@ sourceSets {
     }
 }
 
-def authorizationToken = System.properties["specification_repository_authorization_token"]
+//def authorizationToken = System.properties["specification_repository_authorization_token"]
 
 tasks.register('generate spring-boot-openapi-generation-service 1.0.0 server', GenerateTask) {
     generatorName.set("spring")
-    inputSpec.set("C:\\Users\\saint\\IdeaProjects\\specifications\\repository\\spring-boot-openapi-generation\\1.0.0\\api.yaml")
-//    remoteInputSpec.set("https://repository-host/.../raw/service/some-service/1.0.1/api.yaml")
-    auth.set("Authorization:Bearer $authorizationToken")
+    remoteInputSpec.set("https://raw.githubusercontent.com/SaintCheshire/specifications/main/repository/spring-boot-openapi-generation/1.0.0/api.yaml")
+//    auth.set("Authorization:Bearer $authorizationToken")
     outputDir.set("$buildDir/generated")
     ignoreFileOverride.set(".openapi-generator-ignore")
     configOptions.set([
@@ -93,9 +92,8 @@ tasks.register('generate spring-boot-openapi-generation-service 1.0.0 server', G
 
 tasks.register('generate spring-boot-openapi-generation-service 1.0.0 client', GenerateTask) {
     generatorName.set("spring")
-    inputSpec.set("C:\\Users\\saint\\IdeaProjects\\specifications\\repository\\spring-boot-openapi-generation\\1.0.0\\api.yaml")
-//    remoteInputSpec.set("https://repository-host/.../raw/service/another-service/1.0.0/api.yaml")
-    auth.set("Authorization:Bearer $authorizationToken")
+    remoteInputSpec.set("https://raw.githubusercontent.com/SaintCheshire/specifications/main/repository/spring-boot-openapi-generation/1.0.0/api.yaml")
+//    auth.set("Authorization:Bearer $authorizationToken")
     outputDir.set("$buildDir/generated")
     ignoreFileOverride.set(".openapi-generator-ignore")
     configOptions.set([
